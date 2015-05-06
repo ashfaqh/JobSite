@@ -15,6 +15,7 @@
 
     <!-- JQuery Script -->
     <script src="vendor/jquery-1.11.2.min.js"></script>
+    <script src="vendor/jquery.validate.min.js"></script>
 
     <!-- Bootstrap script -->
     <script src="vendor/bootstrap-3.3.4/js/bootstrap.min.js"></script>
@@ -53,19 +54,23 @@
 <aside>
     <nav>
         <ul>
-            <li class="side-menu-li">
-                <div class="nav-info">
-                    <button>Clients - Post your job requirement</button>
-                </div>
-                <button id="recruiter_form" class="side-menu" title="Recruiter - Submit your requirement">
+            <li class="side-menu-li recruiter-form-li">
+                <ul class="nav-info-recruiter">
+                    <li>
+                        <span>Clients - Post your job requirement</span>
+                    </li>
+                </ul>
+                <button id="recruiter_form_button" class="side-menu" title="Recruiter - Submit your requirement">
                     <i class="el el-group icon"></i>
                 </button>
             </li>
-            <li class="side-menu-li">
-                <div class="nav-info">
-                    <button>Candidates - Post your resume</button>
-                </div>
-                <button id="candidate_form" class="side-menu" title="Candidate - Submit your profile">
+            <li class="side-menu-li candidate-form-li">
+                <ul class="nav-info-candidate">
+                    <li>
+                        <span>Candidates - Post your resume</span>
+                    </li>
+                </ul>
+                <button id="candidate_form_button" class="side-menu" title="Candidate - Submit your profile">
                     <i class="el el-user icon"></i>
                 </button>
             </li>
@@ -73,50 +78,34 @@
     </nav>
 </aside>
 
-<!--
-<aside>
-    <ul class="nav-description">
-        <li id="recruiter_nav" class="recruiter-nav input-group">
-            <button class="btn btn-info">
-                <span>Clients - Post your Job Requirements</span>
-            </button>
-        </li>
-        <li id="candidate_nav" class="candidate-nav input-group">
-            <button class="btn btn-info">
-                <span>Candidates - Submit your Resume</span>
-            </button>
-        </li>
-    </ul>
-</aside>
--->
 <div class="recruiter-form col-sm-6">
-    <form action="#">
+    <form action="#" id="recruiter_form">
         <div class="remove-button">
             <i class="el el-remove-circle"></i>
         </div>
         <div class="input-group">
-            <label for="name" class="sr-only">Full Name</label>
+            <label for="recruiter_name" class="sr-only">Full Name</label>
             <div class="input-group-addon el el-user form-icon"></div>
-            <input type="text" name="name" id="name" placeholder="Name" class="form-control"/>
+            <input type="text" name="name" id="recruiter_name" placeholder="Name" class="form-control" required minlength="2"/>
         </div>
         <div class="input-group">
-            <label for="email" class="sr-only">E-Mail Address</label>
+            <label for="recruiter_email" class="sr-only">E-Mail Address</label>
             <div class="input-group-addon el el-envelope form-icon"></div>
-            <input type="email" name="email" id="email" placeholder="E-Mail" class="form-control"/>
+            <input type="email" name="email" id="recruiter_email" placeholder="E-Mail" class="form-control" required/>
         </div>
         <div class="input-group">
-            <label for="phone" class="sr-only">Contact Number</label>
+            <label for="recruiter_phone" class="sr-only">Contact Number</label>
             <div class="input-group-addon el el-phone form-icon"></div>
-            <input type="tel" name="phone" id="phone" placeholder="Contact Number" class="form-control"/>
+            <input type="tel" name="phone" id="recruiter_phone" placeholder="Contact Number" class="form-control" required/>
         </div>
         <div class="input-group">
-            <label for="company" class="sr-only">Company Name</label>
+            <label for="recruiter_company" class="sr-only">Company Name</label>
             <div class="input-group-addon el el-group form-icon"></div>
-            <input type="text" name="company" id="company" placeholder="Company Name" class="form-control"/>
+            <input type="text" name="company" id="recruiter_company" placeholder="Company Name" class="form-control" required/>
         </div>
         <div class="input-group">
-            <label for="message" class="sr-only">Message</label>
-            <textarea name="message" id="message" cols="50" rows="4" placeholder="Message" class="form-control"></textarea>
+            <label for="recruiter_message" class="sr-only">Message</label>
+            <textarea name="message" id="recruiter_message" cols="50" rows="4" placeholder="Message" class="form-control"></textarea>
         </div>
         <div class="input-group">
             <label for="jobfile" class="sr-only">Job Description</label>
@@ -129,37 +118,37 @@
 </div>
 
 <div class="candidate-form col-sm-6">
-    <form action="#">
+    <form action="#" id="candidate_form">
         <div class="remove-button">
             <i class="el el-remove-circle"></i>
         </div>
         <div class="input-group">
-            <label for="name" class="sr-only">Full Name</label>
+            <label for="candidate_name" class="sr-only">Full Name</label>
             <div class="input-group-addon el el-user form-icon"></div>
-            <input type="text" name="name" id="name" placeholder="Name" class="form-control"/>
+            <input type="text" name="name" id="candidate_name" placeholder="Name" class="form-control" required/>
         </div>
         <div class="input-group">
-            <label for="email" class="sr-only">E-Mail Address</label>
+            <label for="candidate_email" class="sr-only">E-Mail Address</label>
             <div class="input-group-addon el el-envelope form-icon"></div>
-            <input type="email" name="email" id="email" placeholder="E-Mail" class="form-control"/>
+            <input type="email" name="email" id="candidate_email" placeholder="E-Mail" class="form-control" required/>
         </div>
         <div class="input-group">
-            <label for="phone" class="sr-only">Contact Number</label>
+            <label for="candidate_phone" class="sr-only">Contact Number</label>
             <div class="input-group-addon el el-phone form-icon"></div>
-            <input type="tel" name="phone" id="phone" placeholder="Contact Number" class="form-control"/>
+            <input type="tel" name="phone" id="candidate_phone" placeholder="Contact Number" class="form-control"/>
         </div>
         <div class="input-group">
-            <label for="jobtitle" class="sr-only">Job Title</label>
+            <label for="candidate_jobtitle" class="sr-only">Job Title</label>
             <div class="input-group-addon el el-tag form-icon"></div>
-            <input type="text" name="jobtitle" id="jobtitle" placeholder="Job Title" class="form-control"/>
+            <input type="text" name="jobtitle" id="candidate_jobtitle" placeholder="Job Title" class="form-control"/>
         </div>
         <div class="input-group">
-            <label for="message" class="sr-only">Message</label>
-            <textarea name="message" id="message" cols="50" rows="4" placeholder="Message" class="form-control"></textarea>
+            <label for="candidate_message" class="sr-only">Message</label>
+            <textarea name="message" id="candidate_message" cols="50" rows="4" placeholder="Message" class="form-control"></textarea>
         </div>
         <div class="input-group">
             <label for="resume" class="sr-only">Resume</label>
-            <input type="file" name="resume" id="resume" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf" class="filestyle form-attach" data-buttonText=" Resume" data-iconName="glyphicon-folder-open" data-input="true"/>
+            <input type="file" name="resume" id="resume" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf" class="filestyle form-attach" data-buttonText=" Resume" data-iconName="glyphicon-folder-open" data-input="true" required/>
         </div>
         <div class="input-group">
             <button type="submit" class="btn-lg btn-success">Submit</button>
