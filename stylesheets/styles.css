@@ -261,8 +261,10 @@ h3 {
     top: 15%;
     left: 25%;
     font-size: 2.5rem;
-    background-color: rgba(26, 32, 38, 0.5);
+/*    background-color: rgba(26, 32, 38, 0.5); */
+    background-color: rgba(254, 255, 254, 0.9);
     border-radius: 15px;
+    box-shadow: 0 0 5px rgba(26, 32, 38, 0.8);
 }
 .recruiter-form form, .candidate-form form {
     padding: 40px 20px;

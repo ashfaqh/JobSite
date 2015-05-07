@@ -2,24 +2,23 @@
  * Created by ashfaq on 04/05/2015.
  */
 
-var validateForm = function(form){
-    form.validate({
-        rules: {
-            phone: {
-                digits: true
-            }
-        },
-        errorPlacement: function(error, element){
-            var errordiv = element.next("div");
-            errordiv.replaceWith(error);
-            error.addClass("error-message");
-            element.addClass("error");
-            setTimeout(function(){
-                error.fadeOut();
-                error.replaceWith(errordiv);
-            }, 5000);
+var formValidateObject = {
+    rules: {
+        phone: {
+            digits: true,
+            minlength: 10
         }
-    });
+    },
+    errorPlacement: function(error, element) {
+        var errordiv = element.next("div");
+        errordiv.replaceWith(error);
+        error.addClass("error-message");
+        element.addClass("error");
+        setTimeout(function () {
+            error.fadeOut();
+            error.replaceWith(errordiv);
+        }, 5000);
+    }
 };
 
 $(function(){
@@ -61,13 +60,14 @@ $(function(){
         }
     });
 
+    $("#recruiter_form").validate(formValidateObject);
+    $("#candidate_form").validate(formValidateObject);
+
     $("#recruiter_form").submit(function(event){
         event.preventDefault();
-        validateForm($(this));
     });
 
     $("#candidate_form").submit(function(event){
         event.preventDefault();
-        validateForm($(this));
     });
 });
