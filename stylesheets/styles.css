@@ -293,3 +293,14 @@ h3 {
     background: #1A2026;
     color: #FFFFFF;
 }
+.error-message {
+    font-size: 1.2rem;
+    background-color: #c12e2a;
+    color: white;
+    position: absolute;
+    bottom: -5px;
+    left: 12%;
+}
+.error {
+    border-color: #c12e2a;
+}

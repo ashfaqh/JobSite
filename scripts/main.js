@@ -2,6 +2,25 @@
  * Created by ashfaq on 04/05/2015.
  */
 
+var validateForm = function(form){
+    form.validate({
+        rules: {
+            phone: {
+                digits: true
+            }
+        },
+        errorPlacement: function(error, element){
+            var errordiv = element.next("div");
+            errordiv.replaceWith(error);
+            error.addClass("error-message");
+            element.addClass("error");
+            setTimeout(function(){
+                error.fadeOut();
+                error.replaceWith(errordiv);
+            }, 5000);
+        }
+    });
+};
 
 $(function(){
 
@@ -44,11 +63,11 @@ $(function(){
 
     $("#recruiter_form").submit(function(event){
         event.preventDefault();
-        $(this).validate();
+        validateForm($(this));
     });
 
     $("#candidate_form").submit(function(event){
         event.preventDefault();
-        $(this).validate();
+        validateForm($(this));
     });
 });
